@@ -1,0 +1,39 @@
+/* Estilo para o formulário */
+.custom-form {
+    background-color: white;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    padding: 16px;
+  }
+  
+  .custom-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .custom-form input {
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  
+  .custom-form .form-text {
+    margin-top: 6px;
+  }
+  
+  .custom-form .btn {
+    margin-top: 16px;
+  }
+  
+  .custom-form .btn-danger {
+    margin-right: 10px;
+  }
+  
+  .custom-form .text-danger {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+  

@@ -1,0 +1,28 @@
+<div *ngIf="jogo$ | async as jogo" class="info-container text-center my-4">
+  <h3 class="mb-4 mt-1 fw-bold">{{ jogo.titulo }}</h3>
+
+  <table class="table table-custom mx-auto">
+    <tbody class="table-light">
+      <tr>
+        <th scope="row" class="col-4 fw-bold">Identificador</th>
+        <td class="col-8">{{ jogo.id }}</td>
+      </tr>
+      <tr>
+        <th scope="row" class="fw-bold">Gênero</th>
+        <td>{{ jogo.genero }}</td>
+      </tr>
+      <tr>
+        <th scope="row" class="fw-bold">Desenvolvedora</th>
+        <td>{{ jogo.desenvolvedora }}</td>
+      </tr>
+      <tr>
+        <th scope="row" class="fw-bold">Plataforma</th>
+        <td>{{ jogo.plataforma }}</td>
+      </tr>
+      <tr>
+        <th scope="row" class="fw-bold">Preço</th>
+        <td>{{ jogo.preco | currency:'BRL' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

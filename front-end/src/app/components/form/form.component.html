@@ -1,0 +1,71 @@
+<form [formGroup]="jogoForm" class="custom-form">
+    <div class="container">
+      <div class="mb-3">
+        <label for="titulo" class="form-label mt-3 fw-bold">Nome do Jogo</label>
+        <input type="text" class="form-control" id="titulo" formControlName="titulo">
+        <div id="tituloHelp" class="form-text" *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
+          <div *ngIf="titulo?.errors?.['required']">
+            <p class="text-danger">Este campo é obrigatório!</p>
+          </div>
+          <div *ngIf="titulo?.errors?.['maxlength']">
+            <p class="text-danger">Limite máximo de caracteres. (255)</p>
+          </div>
+        </div>
+      </div>  
+
+      <div class="mb-3">
+        <label for="genero" class="form-label fw-bold">Gênero</label>
+        <input type="text" class="form-control" id="genero" formControlName="genero">
+        <div id="generoHelp" class="form-text" *ngIf="genero?.invalid && genero?.touched">
+          <div *ngIf="genero?.errors?.['required']">
+            <p class="text-danger">Este campo é obrigatório!</p>
+          </div>
+          <div *ngIf="genero?.errors?.['maxlength']">
+            <p class="text-danger">Limite máximo de caracteres. (255)</p>
+          </div>
+        </div>
+      </div> 
+
+      <div class="mb-3">
+        <label for="desenvolvedora" class="form-label fw-bold">Desenvolvedora</label>
+        <input type="text" class="form-control" id="desenvolvedora" formControlName="desenvolvedora">
+        <div id="desenvolvedoraHelp" class="form-text" *ngIf="desenvolvedora?.invalid && desenvolvedora?.touched">
+          <div *ngIf="desenvolvedora?.errors?.['required']">
+            <p class="text-danger">Este campo é obrigatório!</p>
+          </div>
+          <div *ngIf="desenvolvedora?.errors?.['maxlength']">
+            <p class="text-danger">Limite máximo de caracteres. (255)</p>
+          </div>
+        </div>
+      </div> 
+
+      <div class="mb-3">
+        <label for="desenvolvedora" class="form-label fw-bold">Plataforma</label>
+        <input type="text" class="form-control" id="plataforma" formControlName="plataforma">
+        <div id="desenvolvedoraHelp" class="form-text" *ngIf="plataforma?.invalid && plataforma?.touched">
+          <div *ngIf="plataforma?.errors?.['required']">
+            <p class="text-danger">Este campo é obrigatório!</p>
+          </div>
+          <div *ngIf="plataforma?.errors?.['maxlength']">
+            <p class="text-danger">Limite máximo de caracteres. (255)</p>
+          </div>
+        </div>
+      </div> 
+
+      <div class="mb-3">
+        <label for="preco" class="form-label fw-bold">Preço</label>
+        <input type="text" class="form-control" id="preco" formControlName="preco" mask="separator.2" decimalSeparator=".">
+        <div id="precoHelp" class="form-text" *ngIf="preco?.invalid && preco?.touched">
+          <div *ngIf="preco?.errors?.['required']">
+            <p class="text-danger">Este campo é obrigatório!</p>
+          </div>
+          <div *ngIf="preco?.errors?.['max']">
+            <p class="text-danger">Limite máximo de caracteres. (36 - inteiros, 2 - decimais)</p>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-danger me-3" routerLink="/jogos" routerLinkActive="active">Voltar</a>
+      <button type="submit" class="btn" [class]="corBotao" [disabled]="jogoForm.invalid || preco?.value <= 0">{{ textoBotao }}</button>
+    </div>
+  </form>
+  
