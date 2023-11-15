@@ -64,6 +64,18 @@
           </div>
         </div>
       </div>
+
+      <div class="mb-3">
+        <label for="descricao" class="form-label fw-bold">Descrição</label>
+        <textarea class="form-control" id="descricao" formControlName="descricao" rows="4"></textarea>
+        <div id="descricaoHelp" class="form-text" *ngIf="descricao?.invalid && descricao?.touched">
+          <div *ngIf="descricao?.errors?.['maxlength']">
+            <p class="text-danger">Limite máximo de caracteres. (255)</p>
+          </div>
+        </div>
+      </div>
+      
+
       <a class="btn btn-danger me-3" routerLink="/jogos" routerLinkActive="active">Voltar</a>
       <button type="submit" class="btn" [class]="corBotao" [disabled]="jogoForm.invalid || preco?.value <= 0">{{ textoBotao }}</button>
     </div>

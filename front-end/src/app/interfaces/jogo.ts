@@ -3,6 +3,7 @@ export interface IJogo {
     titulo: string,
     genero: string,
     desenvolvedora: string,
-    plataforma: string
-    preco: number
+    plataforma: string,
+    preco: number,
+    descricao: string
 }

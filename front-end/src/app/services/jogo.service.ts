@@ -4,13 +4,14 @@ import { IJogo } from '../interfaces/jogo';
 import { IPaginacao } from '../interfaces/paginacao';
 import { Observable } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JogoService {
 
-  api = 'https://api-jogos-leo.onrender.com/api/jogos'
+  api = 'https://api-jogos-projeto.onrender.com/api/jogos'
 
   constructor(private http:HttpClient) {}
 
@@ -20,6 +21,10 @@ export class JogoService {
       .set('size', size.toString());
 
     return this.http.get<IPaginacao<IJogo>>(this.api, { params });
+  }
+
+  pegarJogoPorId(id: number) {
+    return this.http.get<IJogo>(`${this.api}/${id}`);
   }
 
   adicionarJogo(jogo: IJogo){
@@ -34,17 +39,14 @@ export class JogoService {
     return this.http.delete<IJogo>(`${this.api}/${id}`);
   }
 
-  pegarJogoPorId(id: number) {
-    return this.http.get<IJogo>(`${this.api}/${id}`);
-  }
-
   pegarJogoForm(): FormGroup {
     return new FormGroup({
       titulo: new FormControl('', [Validators.required, Validators.maxLength(255)]),
       genero: new FormControl('', [Validators.required, Validators.maxLength(255)]),
       desenvolvedora: new FormControl('', [Validators.required, Validators.maxLength(255)]),
       plataforma: new FormControl('', [Validators.required, Validators.maxLength(255)]),
-      preco: new FormControl(1, [Validators.required, Validators.max(999999999999999999999999999999999999)])
+      preco: new FormControl(1, [Validators.required, Validators.max(999999999999999999999999999999999999)]),
+      descricao: new FormControl('', [Validators.maxLength(255)]),
     });
   }
 }

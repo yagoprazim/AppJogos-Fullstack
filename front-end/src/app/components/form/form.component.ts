@@ -30,5 +30,8 @@ export class FormComponent {
   get preco() {
     return this.jogoForm.get('preco');
   }
+  get descricao() {
+    return this.jogoForm.get('descricao');
+  }
 
 }

@@ -3,25 +3,29 @@
 
   <table class="table table-custom mx-auto">
     <tbody class="table-light">
-      <tr>
+      <tr *ngIf="jogo.id !== null && jogo.id !== undefined">
         <th scope="row" class="col-4 fw-bold">Identificador</th>
         <td class="col-8">{{ jogo.id }}</td>
       </tr>
-      <tr>
+      <tr *ngIf="jogo.genero">
         <th scope="row" class="fw-bold">Gênero</th>
         <td>{{ jogo.genero }}</td>
       </tr>
-      <tr>
+      <tr *ngIf="jogo.desenvolvedora">
         <th scope="row" class="fw-bold">Desenvolvedora</th>
         <td>{{ jogo.desenvolvedora }}</td>
       </tr>
-      <tr>
+      <tr *ngIf="jogo.plataforma">
         <th scope="row" class="fw-bold">Plataforma</th>
         <td>{{ jogo.plataforma }}</td>
       </tr>
-      <tr>
+      <tr *ngIf="jogo.preco">
         <th scope="row" class="fw-bold">Preço</th>
         <td>{{ jogo.preco | currency:'BRL' }}</td>
+      </tr>
+      <tr *ngIf="jogo.descricao">
+        <th scope="row" class="fw-bold">Descrição</th>
+        <td style="text-align: justify;">{{ jogo.descricao }}</td>
       </tr>
     </tbody>
   </table>
