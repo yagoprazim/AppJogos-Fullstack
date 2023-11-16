@@ -52,4 +52,35 @@ export class AlertaService {
       cancelButtonText: 'Não'
     });
   }
+
+  mostrarAlertaIdInexistente(mensagem: string) {
+    Swal.fire({
+      title: 'Erro',
+      text: mensagem,
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  }
+
+  campoInvalido(mensagem: string) {
+    Swal.fire({
+      title: 'Atenção',
+      text: mensagem,
+      icon: 'info',
+      confirmButtonText: 'OK'
+    });
+  }
+
+  campoInvalidoComCallback(mensagem: string, callback: () => void) {
+    Swal.fire({
+      title: 'Atenção',
+      text: mensagem,
+      icon: 'info',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        callback();
+      }
+    });
+  }
 }

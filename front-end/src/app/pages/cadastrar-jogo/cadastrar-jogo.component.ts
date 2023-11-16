@@ -23,7 +23,6 @@ export class CadastrarJogoComponent {
           this.jogoForm.reset();
         },
         (error) => {
-          this.alertaService.exibirErro('Erro ao adicionar', 'Não foi possível adicionar o jogo.');
           this.jogoForm.reset();
         }
       );

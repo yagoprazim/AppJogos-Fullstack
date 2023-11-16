@@ -45,9 +45,6 @@ export class AtualizarJogoComponent {
       this.jogoService.atualizarJogo(jogo).subscribe(
         () => {
           this.alertaService.exibirSucessoComRedirecionamento('Jogo atualizado', 'As informações do jogo foram atualizadas com sucesso.');
-        },
-        () => {
-          this.alertaService.exibirErro('Erro ao atualizar', "Não foi possível atualizar as informações do jogo.");
         }
       );
     }

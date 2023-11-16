@@ -44,7 +44,7 @@
 
 /* Estilo para a paginação */
 .pagination-info {
-  margin-top: 12px;
+  margin-top: 6.5px;
   color: #6c757d;
 }
 
@@ -52,10 +52,10 @@
 .container-custom {
   background-color: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
 }
 
 /* Define o espaçamento interno do container principal */
 .container-custom > * {
-  padding: 16px;
+  padding: 15.5px;
 }
+
