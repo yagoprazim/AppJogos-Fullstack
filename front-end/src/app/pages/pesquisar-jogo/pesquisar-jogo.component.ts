@@ -13,7 +13,7 @@ import { switchMap } from 'rxjs/operators';
 export class PesquisarJogoComponent {
   jogo$ = new Observable<IJogo>();
 
-  constructor(private jogoService: JogoService, private route: ActivatedRoute,){}
+  constructor(private jogoService: JogoService, private route: ActivatedRoute){}
 
   ngOnInit() {
     this.jogo$ = this.route.paramMap.pipe(

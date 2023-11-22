@@ -18,6 +18,15 @@ export class AlertaService {
     });
   }
 
+  exibirSucessoSemBotao(titulo: string){
+    Swal.fire({
+      icon: "success",
+      title: titulo,
+      showConfirmButton: false
+    });
+  }
+  
+
   exibirSucessoComRedirecionamento(titulo: string, mensagem: string): Promise<void> {
     return Swal.fire({
       title: titulo,
@@ -58,9 +67,16 @@ export class AlertaService {
       title: 'Erro',
       text: mensagem,
       icon: 'error',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/jogos']);
+      }
     });
   }
+  
+  
 
   campoInvalido(mensagem: string) {
     Swal.fire({
@@ -81,6 +97,16 @@ export class AlertaService {
       if (result.isConfirmed) {
         callback();
       }
+    });
+  }
+
+  loading(){
+    Swal.fire({
+      title: 'Carregando',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
   }
 }

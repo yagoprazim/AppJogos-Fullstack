@@ -3,6 +3,7 @@ import { IJogo } from 'src/app/interfaces/jogo';
 import { IPaginacao } from 'src/app/interfaces/paginacao';
 import { JogoService } from 'src/app/services/jogo.service';
 import { AlertaService } from 'src/app/services/alerta.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-jogos',
@@ -17,13 +18,15 @@ export class ListarJogosComponent implements OnInit {
   constructor(private jogoService: JogoService, private alertaService: AlertaService) {}
 
   ngOnInit() {
-  this.carregarJogos();
+    this.alertaService.loading();
+    this.carregarJogos();
   }
 
   carregarJogos() {
     this.jogoService.listarJogos(this.paginaAtual, this.tamanhoPagina)
       .subscribe((data: IPaginacao<IJogo>) => {
         this.paginacao$ = data;
+        Swal.close();
       });
   }
 
@@ -37,10 +40,16 @@ export class ListarJogosComponent implements OnInit {
       .then((result) => {
         if (result.isConfirmed) {
           this.jogoService.deletarJogo(id).subscribe(() => {
-            this.alertaService.exibirSucesso('Jogo Excluído', 'O jogo foi removido da sua lista com sucesso.');
-            this.carregarJogos(); // Atualize a lista chamando o método carregarJogos
+            this.alertaService.exibirSucessoSemBotao('Jogo excluído com sucesso.');
+
+            const wasLastItemOnPage = this.paginacao$?.content.length === 1;
+            if (this.paginaAtual > 0 && wasLastItemOnPage) {
+              this.paginaAtual--;
+            }
+            this.carregarJogos();
           });
         }
       });
   }
+  
 }

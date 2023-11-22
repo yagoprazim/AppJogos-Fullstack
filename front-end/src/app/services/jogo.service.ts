@@ -32,7 +32,7 @@ export class JogoService {
         catchError((error: any) => {
           if (error.status !== 200) {
             this.alertaService.mostrarAlertaIdInexistente(error.error.erro);
-            this.router.navigate(['/jogos']);
+            
           }
           return throwError(error);
         })
@@ -76,7 +76,7 @@ export class JogoService {
       genero: new FormControl('', [Validators.required, Validators.maxLength(255)]),
       desenvolvedora: new FormControl('', [Validators.required, Validators.maxLength(255)]),
       plataforma: new FormControl('', [Validators.required, Validators.maxLength(255)]),
-      preco: new FormControl(1, [Validators.required, Validators.max(999999999999999999999999999999999999)]),
+      preco: new FormControl(0, [Validators.required, Validators.max(999999999999999999999999999999999999)]),
       descricao: new FormControl('', [Validators.maxLength(255)]),
     });
   }
